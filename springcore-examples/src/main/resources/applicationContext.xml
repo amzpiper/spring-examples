@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
+       profile="dev">
+
+    <context:component-scan base-package="top.guoyuhang"/>
+    <context:property-placeholder location="db.properties"/>
+
+    <bean class="guoyuhang.soundsystem.SgtPeppers" id="compactDisc" primary="true"/>
+    <bean class="guoyuhang.soundsystem.CDPlayer" id="cdPlayer" c:_0-ref="compactDisc" >
+        <!--        <constructor-arg ref="compactDisc"/>-->
+    </bean>
+    <bean class="guoyuhang.soundsystem.CDPlayer" id="cdPlayer2" p:cd-ref="compactDisc">
+        <!--        <property name="cd" ref="compactDisc" />-->
+    </bean>
+    <bean class="guoyuhang.soundsystem.BlankDisc" id="blankDisc2" c:_0="${title}" c:_1="#{T(System).currentTimeMillis()}">
+        <constructor-arg value="a"/>
+        <constructor-arg value="b"/>
+    </bean>
+
+    <bean class="guoyuhang.soundsystem.BlankDisc" id="blankDisc3">
+        <constructor-arg value="a"/>
+        <constructor-arg value="b"/>
+        <constructor-arg>
+            <list>
+                <value>1</value>
+                <value>2</value>
+            </list>
+        </constructor-arg>
+    </bean>
+    <bean class="guoyuhang.soundsystem.BlankDisc" id="blankDisc1">
+        <constructor-arg>
+            <list>
+                <ref bean="compactDisc" />
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!--  实现与proxyMode一样效果  -->
+    <bean class="guoyuhang.soundsystem.ShoppingCart" scope="session">
+        <!--默认基于类CGLIB代理-->
+        <aop:scoped-proxy/>
+
+        <!--基于接口代理-->
+        <aop:scoped-proxy proxy-target-class="false"/>
+    </bean>
+
+
+    <aop:aspectj-autoproxy />
+    <bean class="guoyuhang.concert.Audience"/>
+    <aop:config>
+        <aop:aspect ref="audience">
+            <aop:pointcut id="au" expression="execution(* top.guoyuhang.concert.Performance.perform(..)))"/>
+            <aop:before method="silenceCellPhones" pointcut-ref="au"/>
+            <aop:before method="takeSeats" pointcut-ref="au"/>
+            <aop:after-returning method="applause" pointcut-ref="au"/>
+            <aop:after-throwing method="demandRefund" pointcut-ref="au"/>
+            <aop:around method="watchPerformance" pointcut-ref="au"/>
+        </aop:aspect>
+    </aop:config>
+    <bean id="trackCounter" class="guoyuhang.concert.TrackCounter"/>
+    <aop:config>
+        <aop:aspect ref="trackCounter">
+            <aop:pointcut id="tr" expression="execution(* top.guoyuhang.soundsystem.CompactDisc.playTrack(int))"/>
+            <aop:before pointcut-ref="tr" method="countTrack" />
+        </aop:aspect>
+    </aop:config>
+    <aop:config>
+        <aop:aspect>
+            <aop:declare-parents
+                    types-matching="top.guoyuhang.concert.Performance+"
+                    implement-interface="guoyuhang.concert.Encoreable"
+                    default-impl="guoyuhang.concert.DefaultEncoreable">
+            </aop:declare-parents>
+        </aop:aspect>
+    </aop:config>
+</beans>
