@@ -5,8 +5,7 @@ public class Spitter {
 
     private Long id;
 
-    public Spittle() {
-
+    public Spitter() {
     }
 
     public Spitter(Long id, @NotNull @Size(min = 2, max = 30, message = "{firstName.size}") String firstName, @NotNull @Size(min = 2, max = 30, message = "{lastName.size}") String lastName, @NotNull @Size(min = 5, max = 16, message = "{username.size}") String username, @NotNull @Size(min = 5, max = 25, message = "{password.size}") String password) {
