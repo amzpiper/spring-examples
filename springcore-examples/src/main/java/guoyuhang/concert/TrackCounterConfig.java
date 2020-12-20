@@ -1,18 +1,18 @@
 package guoyuhang.concert;
 
+import guoyuhang.soundsystem.BlankDisc;
+import guoyuhang.soundsystem.CompactDisc;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import top.guoyuhang.soundsystem.BlankDisc;
-import top.guoyuhang.soundsystem.CompactDisc;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan( basePackages = "top.guoyuhang")
+@ComponentScan( basePackages = "guoyuhang")
 public class TrackCounterConfig {
 
     @Bean

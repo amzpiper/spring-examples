@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="springmvc-examples" />
+        <module name="springrpc-examples" />
         <module name="springcore-examples" />
       </profile>
     </annotationProcessing>
