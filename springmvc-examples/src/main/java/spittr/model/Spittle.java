@@ -11,6 +11,23 @@ public class Spittle {
     private final Date time;
     private Double latitude;
     private Double longitude;
+    private Spitter spitter;
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Spitter getSpitter() {
+        return spitter;
+    }
+
+    public void setSpitter(Spitter spitter) {
+        this.spitter = spitter;
+    }
 
     public Spittle(String message, Date time) {
         this(message, time, null, null);

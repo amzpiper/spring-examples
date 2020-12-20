@@ -25,6 +25,7 @@
     LastName: <input type="text" name="lastName"/><br>
     UserName: <input type="text" name="username"/><br>
     Password: <input type="text" name="password"/><br>
+    Profile Picture: <input type="file" name="profilePicture" accept="image/jpeg,image/png,image/gif" />
     <input type="submit" value="Register"/>
 </form>
 
