@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http:www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/resources/styles.css}">
+</head>
+<body>
+    <h1>WelCome to Spittr</h1>
+
+    <a th:href="@{/spittles}">Spittles</a>
+    <a th:href="@{/spitter/register}">Register</a>
+
+    <label for="" th:class="${#fields.hasErrors('firstName)} ? 'error'"></label>
+    <input type="text" th:fields="*{firstName}" th:class="${}">
+
+    <form action="" th:action="@{/spittles}"></form>
+</body>
+</html>
