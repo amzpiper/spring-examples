@@ -1,4 +1,4 @@
-package top.guoyuhang.spitter;
+package top.guoyuhang.rmi.spitter;
 
 import org.springframework.stereotype.Repository;
 

@@ -1,15 +1,13 @@
-package top.guoyuhang.client;
+package top.guoyuhang.rmi.client;
 
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import top.guoyuhang.config.SpitterAppInitalizer;
-import top.guoyuhang.spitter.SpitterService;
+import top.guoyuhang.rmi.config.SpitterAppInitalizer;
+import top.guoyuhang.rmi.spitter.SpitterService;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
