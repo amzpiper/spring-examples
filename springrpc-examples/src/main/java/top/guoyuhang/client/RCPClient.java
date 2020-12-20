@@ -18,6 +18,7 @@ import java.rmi.RemoteException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {SpitterAppInitalizer.class,ClientConfig.class})
+//@ContextConfiguration(classes = {ClientConfig.class})
 @ActiveProfiles("dev")
 public class RCPClient {
 

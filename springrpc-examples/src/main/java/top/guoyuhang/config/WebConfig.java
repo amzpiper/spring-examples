@@ -11,7 +11,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import top.guoyuhang.spitter.Spitter;
 import top.guoyuhang.spitter.SpitterService;
+
+import java.util.List;
 
 @ComponentScan(basePackages = "top.guoyuhang")
 @Configuration
@@ -48,5 +51,25 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         rmiServiceExporter.setRegistryHost("top.guoyuhang");
         rmiServiceExporter.setRegistryPort(1199);
         return rmiServiceExporter;
+    }
+
+    @Bean
+    public SpitterService spitterService() {
+        return new SpitterService() {
+            @Override
+            public List<Spitter> getRecentSpitters() {
+                return null;
+            }
+
+            @Override
+            public void saveSpitter(Spitter spitter) {
+
+            }
+
+            @Override
+            public Spitter getSpitter(long id) {
+                return null;
+            }
+        };
     }
 }
