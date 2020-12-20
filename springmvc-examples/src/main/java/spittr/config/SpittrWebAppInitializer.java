@@ -13,13 +13,21 @@ public class SpittrWebAppInitializer extends AbstractAnnotationConfigDispatcherS
         return new String[]{"/"};
     }
 
+    /**
+     * 配置ContextLoaderListener创建的bean
+     * @return
+     */
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{WebAppConfiguration.class};
+        return new Class<?>[]{RootConfig.class};
     }
 
+    /**
+     * 定义DispatcherServlet的bean
+     * @return
+     */
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return null;
+        return new Class<?>[]{WebConfig.class};
     }
 }
