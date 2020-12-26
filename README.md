@@ -1,7 +1,7 @@
 # spring-examples
 Spring examples
 Package:top.guoyuhang
-# config:第二章装配bean
+# com.guoyuhang.config:第二章装配bean
 自动装配Annotation
 xmlConfig
 javaConfig

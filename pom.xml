@@ -11,6 +11,9 @@
     <module>springcore-examples</module>
     <module>springmvc-examples</module>
     <module>springrpc-examples</module>
+    <module>springrest-examples</module>
+    <module>springjms-examples</module>
+    <module>springwebsocket-examples</module>
   </modules>
   <packaging>pom</packaging>
 

@@ -8,7 +8,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 public class SpringConfig {
 
     public void initConfigFileSystem(){
-        ApplicationContext context = new FileSystemXmlApplicationContext("D:\\Programming\\spring\\spring-examples\\src\\main\\java\\top\\guoyuhang\\config\\knight.xml");
+        ApplicationContext context = new FileSystemXmlApplicationContext("D:\\Programming\\spring\\spring-examples\\src\\main\\java\\top\\guoyuhang\\com.guoyuhang.config\\knight.xml");
     }
 
     public void initConfigClassPathXml(){
@@ -16,7 +16,7 @@ public class SpringConfig {
     }
 
     public void initConfigAnnotation(){
-        ApplicationContext context = new AnnotationConfigApplicationContext("top.guoyuhang.config.knight");
+        ApplicationContext context = new AnnotationConfigApplicationContext("top.guoyuhang.com.guoyuhang.config.knight");
     }
 
 //WebConfig

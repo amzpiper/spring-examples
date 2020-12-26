@@ -23,20 +23,20 @@
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextClass</param-name>
-      <param-value>spittr.config.SpittrWebAppInitializer</param-value>
+      <param-value>spittr.com.guoyuhang.config.SpittrWebAppInitializer</param-value>
     </init-param>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:spittr/config/SpittrWebAppInitializer.java</param-value>
+      <param-value>classpath:spittr/com.guoyuhang.config/SpittrWebAppInitializer.java</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
     <!--  xml配置上传限制  -->
-    <multipart-config>
+    <multipart-com.guoyuhang.config>
       <location>/tmp/uploads</location>
       <max-file-size>2097152</max-file-size>
       <max-request-size>4194304</max-request-size>
       <file-size-threshold>0</file-size-threshold>
-    </multipart-config>
+    </multipart-com.guoyuhang.config>
   </servlet>
 
   <servlet-mapping>

@@ -36,7 +36,7 @@
         spring-oxm
         spring-test
         spring-tx
-        spring-web
+        spring-com.guoyuhang.config
         spring-webmvc
         spring-webmvc-portlet
         spring-websocket
