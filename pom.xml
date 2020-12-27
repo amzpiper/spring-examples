@@ -14,6 +14,7 @@
     <module>springrest-examples</module>
     <module>springjms-examples</module>
     <module>springwebsocket-examples</module>
+    <module>springemail-examples</module>
   </modules>
   <packaging>pom</packaging>
 

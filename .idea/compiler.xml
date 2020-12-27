@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="springwebsocket-examples" />
+        <module name="springemail-examples" />
         <module name="springjms-examples" />
         <module name="springrpc-examples" />
         <module name="springmvc-examples" />
@@ -15,6 +16,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="springemailmbean-examples" target="11" />
       <module name="springrest-example" target="11" />
     </bytecodeTargetLevel>
   </component>
