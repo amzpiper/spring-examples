@@ -1,4 +1,4 @@
-package top.guoyuhang.rmi.config;
+package top.guoyuhang.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

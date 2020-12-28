@@ -1,4 +1,4 @@
-package top.guoyuhang.rmi.config;
+package top.guoyuhang.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
