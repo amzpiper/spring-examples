@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xmlns:beans="http://www.springframework.org/schema/beans"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/rabbit
+        http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd
+        http://www.springframework.org/schema/jms
+        http://www.springframework.org/schema/jms/spring-jms.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <context:component-scan base-package="com.guoyuhang"/>
+
+    <!--声明连接工厂-->
+    <bean id="connectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory" p:brokerURL="http://localhost:61616"/>
+    <amq:connectionFactory id="connectionFactory2" brokerURL="http://localhost:61616"/>
+
+    <!--消息目的地-->
+    <!--声明队列-->
+    <bean id="queue" class="org.apache.activemq.command.ActiveMQQueue"/>
+    <!--声明主题-->
+    <bean id="topic" class="org.apache.activemq.command.ActiveMQTopic"/>
+
+    <!--json消息转换器-->
+    <bean id="messageJsonConverter" class="org.springframework.jms.support.converter.MappingJackson2MessageConverter"/>
+
+    <!--jmsTemplate,配置连接工厂与默认目的地,配置消息转换器-->
+    <bean id="jsmTemplate" class="org.springframework.jms.core.JmsTemplate" c:_0-ref="connectionFactory" p:defaultDestinationName="alert.queue" p:messageConverter-ref="messageJsonConverter" />
+
+    <!--配置POJO-->
+    <bean id="stringHandler" class="com.guoyuhang.alerts.StringAlertHandler"/>
+    <!--配置消息监听器容器-->
+    <jms:listener-container connection-factory="connectionFactory">
+        <!--把POJO配置消息监听器，并设置相应方法-->
+        <jms:listener destination="alert.queue" ref="stringHandler" method="handleStringAlert"/>
+    </jms:listener-container>
+
+    <!--jmsRPC-->
+    <bean id="alertService" class="com.guoyuhang.alerts.AlertServiceImpl"/>
+    <bean id="alertServiceExporter" class="org.springframework.jms.remoting.JmsInvokerServiceExporter" p:service-ref="alertService" p:serviceInterface="com.guoyuhang.alerts.AlertService"/>
+    <jms:listener-container connection-factory="connectionFactory">
+        <jms:listener destination="alert.queue" ref="alertServiceExporter"/>
+    </jms:listener-container>
+
+    <!--rabbit:默认监听5672端口，用户名密码为guest-->
+    <rabbit:connection-factory id="connectionFactory3" host="${rabbitmq.host}" port="${rabbitmq.port}" username="rabbitmq.username" password="${rabbitmq.password}"/>
+    <rabbit:admin connection-factory="connectionFactory3"/>
+    <rabbit:queue id="queue2" name="alert"/>
+    <rabbit:queue id="queue3" name="alert"/>
+    <rabbit:fanout-exchange name="fanout">
+        <rabbit:bindings>
+            <rabbit:binding queue="queue2"/>
+            <rabbit:binding queue="queue3"/>
+        </rabbit:bindings>
+    </rabbit:fanout-exchange>
+    <rabbit:template id="rabbitTemplate" connection-factory="connectionFactory3"/>
+
+    <!--Rabbit POJO消息驱动-->
+    <bean id="spitterListener" class="com.guoyuhang.alerts.StringAlertHandler"/>
+    <rabbit:listener-container connection-factory="connectionFactory3">
+        <rabbit:listener ref="spitterListener" method="handleStringAlert" queue-names="alert.queue" queues="queue3"/>
+    </rabbit:listener-container>
+
+</beans>
