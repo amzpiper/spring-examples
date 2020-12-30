@@ -1,4 +1,4 @@
-package top.guoyuhang.rmi.client;
+package top.guoyuhang.client;
 
 
 import org.junit.Test;
@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import top.guoyuhang.rmi.config.SpitterAppInitalizer;
+import top.guoyuhang.config.SpitterAppInitalizer;
 import top.guoyuhang.rmi.spitter.SpitterService;
 
 import java.net.MalformedURLException;
@@ -18,7 +18,7 @@ import java.rmi.RemoteException;
 @ContextConfiguration(classes = {SpitterAppInitalizer.class,ClientConfig.class})
 //@ContextConfiguration(classes = {ClientConfig.class})
 @ActiveProfiles("dev")
-public class RCPClient {
+public class RMIClient {
 
     @Test
     public void TestGetRMIService() {
