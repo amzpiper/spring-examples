@@ -18,7 +18,7 @@ public class MyTest {
         userService.getUser();
         */
 
-        //引用spring容器创建好的对象
+        //引用spring容器创建好的对象，以后改调用直接改xml文件
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         UserService service = (UserService) context.getBean("service");
         service.getUser();
