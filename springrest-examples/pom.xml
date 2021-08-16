@@ -8,35 +8,25 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-<<<<<<< HEAD
     <artifactId>springrest-example</artifactId>
     <packaging>war</packaging>
     <name>springrest-example Maven Webapp</name>
-=======
-
-    <artifactId>springrest-examples</artifactId>
-    <packaging>war</packaging>
-
-    <name>springrest-examples Maven Webapp</name>
->>>>>>> d31b794dde8e1b1aa82a48777a89277b58cbd12a
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <dependencies>
         <dependency>
-<<<<<<< HEAD
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
             <scope>test</scope>
-=======
-            <groupId>org.springframework</groupId>
+        </dependency>
+        <dependency>
+        <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>5.3.1</version>
         </dependency>
@@ -45,17 +35,13 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.1</version>
->>>>>>> d31b794dde8e1b1aa82a48777a89277b58cbd12a
         </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
-<<<<<<< HEAD
-=======
             <scope>provided</scope>
->>>>>>> d31b794dde8e1b1aa82a48777a89277b58cbd12a
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
@@ -63,7 +49,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>5.3.2</version>
-<<<<<<< HEAD
             <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
@@ -71,8 +56,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>5.3.2</version>
-=======
->>>>>>> d31b794dde8e1b1aa82a48777a89277b58cbd12a
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
         <dependency>
@@ -92,7 +75,6 @@
             <artifactId>spring-webmvc</artifactId>
             <version>5.3.2</version>
         </dependency>
-<<<<<<< HEAD
         <!--jackson-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -116,14 +98,7 @@
     </dependencies>
 
     <build>
-        <finalName>springrest-example</finalName>
-=======
-    </dependencies>
-
-
-    <build>
         <finalName>springrest-examples</finalName>
->>>>>>> d31b794dde8e1b1aa82a48777a89277b58cbd12a
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>

@@ -16,7 +16,15 @@
     <module>springjms-examples</module>
     <module>springwebsocket-examples</module>
     <module>springemail-examples</module>
+    <module>spring-01-ioc</module>
   </modules>
   <packaging>pom</packaging>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>5.3.9</version>
+    </dependency>
+  </dependencies>
 </project>
