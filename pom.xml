@@ -17,6 +17,7 @@
     <module>springwebsocket-examples</module>
     <module>springemail-examples</module>
     <module>spring-01-ioc</module>
+      <module>spring-02-hellospring</module>
   </modules>
   <packaging>pom</packaging>
 

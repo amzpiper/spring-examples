@@ -2,21 +2,25 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springwebsocket-examples" />
+        <module name="spring-01-ioc" />
         <module name="springemail-examples" />
         <module name="springjms-examples" />
         <module name="springrpc-examples" />
         <module name="springmvc-examples" />
+        <module name="springcore-examples" />
+        <module name="springwebsocket-examples" />
         <module name="springboot-examples" />
         <module name="springrest-examples" />
-        <module name="springcore-examples" />
+        <module name="spring-02-hellospring" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="spring-study" target="1.8" />
       <module name="springemailmbean-examples" target="11" />
       <module name="springrest-example" target="11" />
     </bytecodeTargetLevel>
