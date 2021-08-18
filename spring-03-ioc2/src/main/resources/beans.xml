@@ -4,7 +4,31 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="user" class="com.kuang.pojo.User">
+    <!--  下标赋值  -->
+    <bean id="user1" class="com.kuang.pojo.User">
+        <property name="name" value="admin"/>
     </bean>
 
+    <!--  类型赋值，不建议使用  -->
+    <bean id="user2" class="com.kuang.pojo.User">
+        <constructor-arg type="java.lang.String" value="admin"/>
+    </bean>
+
+    <!--  通过参数名赋值  -->
+    <bean id="user3" class="com.kuang.pojo.User">
+        <constructor-arg name="name" value="admin"/>
+    </bean>
+
+    <!--  别名  -->
+    <alias name="user1" alias="user"/>
+
+    <!--
+        id:bean的唯一标识符
+        class:bean对象对应的全限定名：包名+类型
+        name:也是别名，而且可以起多个
+          -->
+    <bean id="us" name="use,use2 use3;use4" class="com.kuang.pojo.User" scope="prototype">
+        <description>User</description>
+        <property name="name" value="kuang"/>
+    </bean>
 </beans>

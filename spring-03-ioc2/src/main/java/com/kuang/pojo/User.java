@@ -8,6 +8,10 @@ public class User {
         System.out.println("User的无参构造");
     }
 
+    public User(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
