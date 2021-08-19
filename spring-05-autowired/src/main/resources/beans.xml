@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="cat" class="com.kuang.pojo.Cat">
+    </bean>
+
+    <bean id="dog2" class="com.kuang.pojo.Dog">
+    </bean>
+
+    <!--byName会自动查在容器上下文中查找，和自己对象set方法后面的值对应的bean id-->
+    <!--byType会自动查在容器上下文中查找，和自己对象对象属性类型相同的bean-->
+    <bean id="people" class="com.kuang.pojo.People" autowire="byType">
+        <property name="name" value="狂神"/>
+    </bean>
+
+</beans>

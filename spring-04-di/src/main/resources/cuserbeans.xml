@@ -11,6 +11,6 @@
 
     <!--c命名空间,可以注入属性的值,construct,通过构造器注入-->
     <bean name="c-user" class="com.kuang.pojo.User"
-          c:name="someone" c:age="123" c:_0="someone" c:_1="123"/>
+          c:name="someone" c:age="123" c:_0="someone" c:_1="123" scope="prototype"/>
 
 </beans>
