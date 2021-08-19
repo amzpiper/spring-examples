@@ -20,4 +20,11 @@ public class MyTest {
         User student = context.getBean("p-user",User.class);
         System.out.println(student.toString());
     }
+
+    @Test
+    public void test2() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("cuserbeans.xml");
+        User student = context.getBean("c-user",User.class);
+        System.out.println(student.toString());
+    }
 }
