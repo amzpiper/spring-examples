@@ -1,7 +1,17 @@
 package com.kuang.pojo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import javax.annotation.Resource;
+
 public class People {
+    //如果显示的定义了required = false，说明这个对象为null
+    @Autowired(required = false)
+    @Qualifier(value = "cat")
     private Cat cat;
+    @Autowired
+    @Qualifier(value = "dog")
     private Dog dog;
     private String name;
 
