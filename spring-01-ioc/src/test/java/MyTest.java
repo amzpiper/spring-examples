@@ -1,7 +1,4 @@
-import com.kuang.dao.UserDaoMysqlImpl;
-import com.kuang.service.UserService;
-import com.kuang.service.UserServiceImpl;
-import javafx.application.Application;
+import com.kuang.demo01.service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

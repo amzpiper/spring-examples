@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--注册BEAN-->
+    <bean id="userService" class="com.kuang.demo01.service.UserServiceImpl"/>
+    <bean id="log" class="com.kuang.demo01.log.Log"/>
+    <bean id="afterLog" class="com.kuang.demo01.log.AfterLog"/>
+
+    <!--配置AOP,需要导入aop约束-->
+    <!--方式一：原生SpringAOP接口-->
+    <aop:config>
+        <!--首先需要一个切入点：需要在那个地方执行,表达式：execution(要执行的位置！ * * * * *)-->
+        <aop:pointcut id="pointcut" expression="execution(* com.kuang.demo01.service.UserServiceImpl.*(..))"/>
+
+        <!--执行环绕增强,把log切入到pointcut这个点上面-->
+        <aop:advisor advice-ref="log" pointcut-ref="pointcut"/>
+        <aop:advisor advice-ref="afterLog" pointcut-ref="pointcut"/>
+    </aop:config>
+
+    <!--方式二：自定义类,更加容易明确了,方式一比方式二更强大，可以操作类的方法-->
+    <bean id="diyPointCut" class="com.kuang.demo02.DiyPointCut"/>
+    <aop:config>
+        <!--自定义切面，ref要引用自定义的类-->
+        <aop:aspect ref="diyPointCut">
+            <!--切入点-->
+            <aop:pointcut id="point" expression="execution(* com.kuang.demo01.service.UserServiceImpl.*(..))"/>
+            <!--通知-->
+            <aop:before method="before" pointcut-ref="point"/>
+            <aop:after method="after" pointcut-ref="point"/>
+        </aop:aspect>
+    </aop:config>
+
+    <!--方式三：注解创建切面-->
+    <bean class="com.kuang.demo03.AnnotationPointCut" />
+    <!--开启AOP注解支持,默认jdk方式实现代理,proxy-target-class="true"和使用cglib实现代理-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+</beans>

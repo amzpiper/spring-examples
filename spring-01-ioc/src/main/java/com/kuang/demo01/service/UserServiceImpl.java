@@ -1,8 +1,6 @@
-package com.kuang.service;
+package com.kuang.demo01.service;
 
 import com.kuang.dao.UserDao;
-import com.kuang.dao.UserDaoImpl;
-import com.kuang.dao.UserDaoMysqlImpl;
 
 public class UserServiceImpl implements UserService {
 

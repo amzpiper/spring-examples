@@ -10,7 +10,7 @@
     <bean id="daoImpl" class="com.kuang.dao.UserDaoImpl">
     </bean>
 
-    <bean id="service" class="com.kuang.service.UserServiceImpl">
+    <bean id="service" class="com.kuang.demo01.service.UserServiceImpl">
         <property name="userDao" ref="daoImpl"/>
     </bean>
 

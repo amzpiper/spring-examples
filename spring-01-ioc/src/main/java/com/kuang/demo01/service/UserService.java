@@ -1,4 +1,4 @@
-package com.kuang.service;
+package com.kuang.demo01.service;
 
 import com.kuang.dao.UserDao;
 
