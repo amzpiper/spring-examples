@@ -10,9 +10,8 @@
 
   <modules>
     <module>springcore-examples</module>
-    <module>springmvc-examples</module>
     <module>springrpc-examples</module>
-    <module>springrest-examples</module>
+    <module>springrest-example</module>
     <module>springjms-examples</module>
     <module>springwebsocket-examples</module>
     <module>springemail-examples</module>
@@ -26,6 +25,7 @@
     <module>spring-08-proxy</module>
     <module>spring-09-aop</module>
     <module>spring-10-mybatis</module>
+      <module>spring-11-transaction</module>
   </modules>
   <packaging>pom</packaging>
 
